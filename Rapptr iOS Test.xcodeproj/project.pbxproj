@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C68EB50826EF997900BF4471 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68EB50726EF997900BF4471 /* ChatViewModel.swift */; };
+		C6B31A6B26F18564007DEDCE /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B31A6A26F18564007DEDCE /* MenuButton.swift */; };
 		E28E56EFD76F8C29315B15CB /* Pods_Rapptr_iOS_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D2E15B0CCF3BC080D553AF /* Pods_Rapptr_iOS_Test.framework */; };
 		E9414DB726C45CF300512A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9414DB626C45CF300512A71 /* AppDelegate.swift */; };
 		E9414DC026C45CF400512A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9414DBF26C45CF400512A71 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		3BB758226F554F4D921AA3E2 /* Pods-Rapptr iOS Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rapptr iOS Test.release.xcconfig"; path = "Target Support Files/Pods-Rapptr iOS Test/Pods-Rapptr iOS Test.release.xcconfig"; sourceTree = "<group>"; };
 		4D5F1C1A2836913CCCB196FE /* Pods-Rapptr iOS Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rapptr iOS Test.debug.xcconfig"; path = "Target Support Files/Pods-Rapptr iOS Test/Pods-Rapptr iOS Test.debug.xcconfig"; sourceTree = "<group>"; };
 		C68EB50726EF997900BF4471 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		C6B31A6A26F18564007DEDCE /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		E0D2E15B0CCF3BC080D553AF /* Pods_Rapptr_iOS_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rapptr_iOS_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9414DB326C45CF300512A71 /* Rapptr iOS Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rapptr iOS Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9414DB626C45CF300512A71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		C6B31A6926F1852D007DEDCE /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C6B31A6A26F18564007DEDCE /* MenuButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
 		E9414DAA26C45CF300512A71 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 		E9414DD226C4617B00512A71 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6B31A6926F1852D007DEDCE /* Buttons */,
 				E9414DD326C4617B00512A71 /* Cells */,
 			);
 			path = Views;
@@ -283,6 +294,7 @@
 				E9414DEA26C468D700512A71 /* SceneDelegate.swift in Sources */,
 				E9414DD626C4617B00512A71 /* ChatTableViewCell.swift in Sources */,
 				E9414DE226C4618900512A71 /* AnimationViewController.swift in Sources */,
+				C6B31A6B26F18564007DEDCE /* MenuButton.swift in Sources */,
 				E9414DB726C45CF300512A71 /* AppDelegate.swift in Sources */,
 				C68EB50826EF997900BF4471 /* ChatViewModel.swift in Sources */,
 				E9414DE626C4618900512A71 /* LoginViewController.swift in Sources */,

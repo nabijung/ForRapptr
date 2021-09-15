@@ -32,13 +32,27 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var animationButton: UIButton!
-    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    lazy var stackView: UIStackView = {
+       let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 24
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        [chatButton, loginButton, animationButton].forEach { stack.addArrangedSubview($0) }
+        return stack
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Coding Tasks"
         
+        navigationBarStyle()
+        
+        backgroundImageStyle()
+        
+        stackViewStyle()
         
     }
     
@@ -56,5 +70,46 @@ class MenuViewController: UIViewController {
     @IBAction func didPressAnimationButton(_ sender: Any) {
         let animationViewController = AnimationViewController()
         navigationController?.pushViewController(animationViewController, animated: true)
+    }
+    
+    func navigationBarStyle(){
+        //NAVIGATION BAR
+        title = "Coding Tasks"
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.tintColor = UIColor.white
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "chevron.backward")
+        }
+        navigationController?.navigationBar.barTintColor = UIColor(red: 14/255, green: 92/255, blue: 137/255, alpha: 1.0)
+    }
+    
+    func stackViewStyle(){
+        view.addSubview(stackView)
+        
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 227).isActive = true
+        stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
+        
+    }
+    
+    func backgroundImageStyle(){
+        //BACKGROUND IMAGE
+        let backgroundImage = UIImage(named: "bg_home_menu")
+        let backgroundImageView = UIImageView(image: backgroundImage)
+        
+        view.addSubview(backgroundImageView)
+        
+        backgroundImageView.contentMode = UIView.ContentMode.scaleAspectFill
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        backgroundImageView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }

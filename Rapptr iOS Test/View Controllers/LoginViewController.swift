@@ -6,7 +6,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     /**
      * =========================================================================================
@@ -27,13 +27,38 @@ class LoginViewController: UIViewController {
      * 7) When login is successful, tapping 'OK' in the UIAlertController should bring you back to the main menu.
      **/
     
+   
     // MARK: - Properties
     private var client: LoginClient?
+    
+    lazy var stackView: UIStackView = {
+       let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.spacing = 24
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        [emailTextField, passwordTextField, loginButton].forEach { stack.addArrangedSubview($0) }
+        return stack
+    }()
+    
+    //MARK: - Outlets
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: GeneralButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Login"
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
+        backgroundImageStyle()
+        
+        stackViewStyle()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,5 +73,45 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func didPressLoginButton(_ sender: Any) {
+    }
+    
+    func stackViewStyle(){
+        view.addSubview(stackView)
+        
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: topBarHeight + 64).isActive = true
+        stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
+        
+    }
+    
+    func backgroundImageStyle(){
+        //BACKGROUND IMAGE
+        let backgroundImage = UIImage(named: "img_login")
+        let backgroundImageView = UIImageView(image: backgroundImage)
+        
+        view.addSubview(backgroundImageView)
+        
+        backgroundImageView.contentMode = UIView.ContentMode.scaleAspectFill
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        backgroundImageView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

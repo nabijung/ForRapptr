@@ -23,6 +23,10 @@ class AnimationViewController: UIViewController {
      *
      */
     
+    
+    //MARK: - Outlets
+    @IBOutlet weak var fadeInButton: GeneralButton!
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

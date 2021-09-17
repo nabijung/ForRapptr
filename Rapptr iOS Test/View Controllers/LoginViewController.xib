@@ -65,10 +65,10 @@
     </objects>
     <designables>
         <designable name="9Yh-GL-2qX">
-            <size key="intrinsicContentSize" width="114" height="30"/>
+            <size key="intrinsicContentSize" width="66" height="18"/>
         </designable>
         <designable name="xoa-Sh-ZA6">
-            <size key="intrinsicContentSize" width="85" height="31.5"/>
+            <size key="intrinsicContentSize" width="37" height="19.5"/>
         </designable>
     </designables>
 </document>

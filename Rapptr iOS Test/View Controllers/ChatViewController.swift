@@ -34,22 +34,22 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        messages = [Message]()
-//        configureTable(tableView: chatTable)
+        messages = [Message]()
+        configureTable(tableView: chatTable)
         title = "Chat"
-        
+        view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
         // TODO: Remove test data when we have actual data from the server loaded
         
-        //        messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
-        //        messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
-        //        messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
-        //        messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
-        //        messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
-        //        messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
-        //        messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
-        //        messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
-        //        messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
-        callToViewModelForUIUpdate()
+                messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
+                messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
+                messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
+                messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
+                messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
+                messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
+                messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
+                messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
+                messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
+//        callToViewModelForUIUpdate()
         chatTable.reloadData()
         
     }
@@ -67,6 +67,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ChatTableViewCell", bundle: nil), forCellReuseIdentifier: "ChatTableViewCell")
         tableView.tableFooterView = UIView(frame: .zero)
+        tableView.backgroundColor = .clear
+        
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: topBarHeight + 4).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     // MARK: - UITableViewDataSource
@@ -86,7 +96,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 58.0
+        let rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 600
+        return rowHeight
     }
     
     // MARK: - IBAction

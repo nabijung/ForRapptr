@@ -5,6 +5,7 @@
 //  Copyright © 2020 Rapptr Labs. All rights reserved.
 
 import UIKit
+import Foundation
 
 class AnimationViewController: UIViewController {
     
@@ -26,11 +27,15 @@ class AnimationViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var fadeInButton: GeneralButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Animation"
+        view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
+        imageView.image = UIImage(named: "ic_logo")
+        imageView.alpha = 0
     }
     
     // MARK: - Actions
@@ -40,5 +45,14 @@ class AnimationViewController: UIViewController {
     }
     
     @IBAction func didPressFade(_ sender: Any) {
+        imageView.fadeIn()
     }
+}
+
+public extension UIView {
+    func fadeIn(duration: TimeInterval = 2.0) {
+         UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+         })
+     }
 }

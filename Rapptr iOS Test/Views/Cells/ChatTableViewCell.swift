@@ -20,15 +20,29 @@ class ChatTableViewCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var body: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        setCellStyle()
     }
     
     // MARK: - Public
     func setCellData(message: Message) {
         header.text = message.username
         body.text = message.text
+        avatarImageView.image = UIImage(imageLiteralResourceName: "img_login")
+    }
+    
+    func setCellStyle(){
+        self.backgroundColor = .clear
+        
+        avatarImageView.layer.cornerRadius = avatarImageView.frame.height/2
+        avatarImageView.layer.masksToBounds = true
+        
+        header.textColor = UIColor(red: 27/255, green: 30/255, blue: 31/255, alpha: 1.0)
+        header.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        
     }
 }

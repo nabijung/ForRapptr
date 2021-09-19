@@ -15,22 +15,28 @@ class BodyLabel: UILabel {
     @IBInspectable var bottomInset: CGFloat = 5.0
     @IBInspectable var leftInset: CGFloat = 7.0
     @IBInspectable var rightInset: CGFloat = 7.0
-    
+
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
         super.drawText(in: rect.inset(by: insets))
     }
-    
+
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width + leftInset + rightInset,
-                      height: size.height + topInset + bottomInset)
+        if self.isTruncated {
+            return CGSize(width: size.width + leftInset + rightInset,
+                                      height: size.height + topInset + bottomInset + 20)
+        } else {
+            return CGSize(width: size.width + leftInset + rightInset,
+                          height: size.height + topInset + bottomInset)
+        }
+        
     }
     
     override var bounds: CGRect {
         didSet {
             // ensures this works within stack views if multi-line
-            preferredMaxLayoutWidth = bounds.width - (leftInset + rightInset)
+            preferredMaxLayoutWidth = bounds.width - 16
         }
     }
     
@@ -49,4 +55,22 @@ class BodyLabel: UILabel {
     }
     
     
+}
+
+extension UILabel {
+
+    var isTruncated: Bool {
+
+        guard let labelText = text else {
+            return false
+        }
+
+        let labelTextSize = (labelText as NSString).boundingRect(
+            with: CGSize(width: frame.size.width, height: .greatestFiniteMagnitude),
+            options: .usesLineFragmentOrigin,
+            attributes: [.font: font ?? "system-default"],
+            context: nil).size
+
+        return labelTextSize.height > bounds.size.height
+    }
 }

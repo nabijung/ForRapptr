@@ -49,26 +49,26 @@ class ChatClient {
                 return
             }
             
-//            do {
-//                switch response.statusCode {
-//                case 200:
-//                    let messageJSON = try JSONSerialization.jsonObject(with: data)
-//                    if let dictionary = messageJSON as? [String: Any],
-//                                let messages = dictionary["data"] as? [[String: Any]] {
-//                                DispatchQueue.main.async {
-//                                    messages.forEach {
-//                                        let object = Message.init(testName: $0["name"] as! String, withTestMessage: $0["message"] as! String, avatarURL: $0["avatar_url"] as! String)
-//                                        messageObjects.append(object)
-//                                    }
-//                                    completion(messageObjects)
-//                                }
-//                            }
-//                default:
-//                    errorHandler("error 400")
-//                }
-//            } catch {
-//                errorHandler("error")
-//            }
+            do {
+                switch response.statusCode {
+                case 200:
+                    let messageJSON = try JSONSerialization.jsonObject(with: data)
+                    if let dictionary = messageJSON as? [String: Any],
+                                let messages = dictionary["data"] as? [[String: Any]] {
+                                DispatchQueue.main.async {
+                                    messages.forEach {
+                                        let object = Message.init(testName: $0["name"] as! String, withTestMessage: $0["message"] as! String, avatarURL: $0["avatar_url"] as? String)
+                                        messageObjects.append(object)
+                                    }
+                                    completion(messageObjects)
+                                }
+                            }
+                default:
+                    errorHandler("error 400")
+                }
+            } catch {
+                errorHandler("error")
+            }
         
         
         }

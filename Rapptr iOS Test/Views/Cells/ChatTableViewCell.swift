@@ -5,6 +5,7 @@
 //  Copyright © 2020 Rapptr Labs. All rights reserved.
 
 import UIKit
+import SDWebImage
 
 class ChatTableViewCell: UITableViewCell {
     
@@ -32,7 +33,7 @@ class ChatTableViewCell: UITableViewCell {
     func setCellData(message: Message) {
         header.text = message.username
         body.text = message.text
-        avatarImageView.image = UIImage(imageLiteralResourceName: "img_login")
+        avatarImageView.sd_setImage(with: URL(string: message.avatarURL!))
     }
     
     func setCellStyle(){

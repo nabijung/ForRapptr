@@ -34,30 +34,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        messages = [Message]()
-        configureTable(tableView: chatTable)
         title = "Chat"
         view.backgroundColor = UIColor(red: 249/255, green: 249/255, blue: 249/255, alpha: 1.0)
-        // TODO: Remove test data when we have actual data from the server loaded
-        
-                messages?.append(Message(testName: "James", withTestMessage: "Hey Guys!"))
-                messages?.append(Message(testName:"Paul", withTestMessage:"What's up?"))
-                messages?.append(Message(testName:"Amy", withTestMessage:"Hey! :)"))
-                messages?.append(Message(testName:"James", withTestMessage:"Want to grab some food later?"))
-                messages?.append(Message(testName:"Paul", withTestMessage:"Sure, time and place?"))
-                messages?.append(Message(testName:"Amy", withTestMessage:"YAS! I am starving!!!"))
-                messages?.append(Message(testName:"James", withTestMessage:"1 hr at the Local Burger sound good?"))
-                messages?.append(Message(testName:"Paul", withTestMessage:"Sure thing"))
-                messages?.append(Message(testName:"Amy", withTestMessage:"See you there :P"))
-//        callToViewModelForUIUpdate()
-        chatTable.reloadData()
-        
+        callToViewModelForUIUpdate()
     }
     
     func callToViewModelForUIUpdate(){
         self.chatViewModel.bindChatViewModelToController = {
             self.messages = self.chatViewModel.chatData
             self.configureTable(tableView: self.chatTable)
+            self.chatTable.reloadData()
         }
     }
     
@@ -77,6 +63,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        
     }
     
     // MARK: - UITableViewDataSource

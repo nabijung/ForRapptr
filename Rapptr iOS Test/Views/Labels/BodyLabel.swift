@@ -48,6 +48,7 @@ class BodyLabel: UILabel {
         body.backgroundColor = .white
         body.layer.borderWidth = 1
         body.layer.cornerRadius = 8
+        body.layer.masksToBounds = true
         if #available(iOS 13.0, *) {
             body.layer.borderColor = CGColor(red: 239/255, green: 239/255, blue: 239/255, alpha: 1.0)
         }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		C6B31A6D26F37AD4007DEDCE /* GeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B31A6C26F37AD4007DEDCE /* GeneralButton.swift */; };
 		C6B31A7026F386AB007DEDCE /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B31A6F26F386AB007DEDCE /* LoginTextField.swift */; };
 		C6B31A7326F43DD1007DEDCE /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B31A7226F43DD1007DEDCE /* BodyLabel.swift */; };
+		C6E9D38126F6CDBA00566134 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E9D38026F6CDBA00566134 /* AlertControllerExtension.swift */; };
 		E28E56EFD76F8C29315B15CB /* Pods_Rapptr_iOS_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D2E15B0CCF3BC080D553AF /* Pods_Rapptr_iOS_Test.framework */; };
 		E9414DB726C45CF300512A71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9414DB626C45CF300512A71 /* AppDelegate.swift */; };
 		E9414DC026C45CF400512A71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9414DBF26C45CF400512A71 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		C6B31A6C26F37AD4007DEDCE /* GeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralButton.swift; sourceTree = "<group>"; };
 		C6B31A6F26F386AB007DEDCE /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		C6B31A7226F43DD1007DEDCE /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
+		C6E9D38026F6CDBA00566134 /* AlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControllerExtension.swift; sourceTree = "<group>"; };
 		E0D2E15B0CCF3BC080D553AF /* Pods_Rapptr_iOS_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rapptr_iOS_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9414DB326C45CF300512A71 /* Rapptr iOS Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rapptr iOS Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9414DB626C45CF300512A71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 			path = Labels;
 			sourceTree = "<group>";
 		};
+		C6E9D37F26F6CD9E00566134 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C6E9D38026F6CDBA00566134 /* AlertControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E9414DAA26C45CF300512A71 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 			children = (
 				E9414DB626C45CF300512A71 /* AppDelegate.swift */,
 				E9414DE926C468D700512A71 /* SceneDelegate.swift */,
+				C6E9D37F26F6CD9E00566134 /* Extensions */,
 				E9414DD226C4617B00512A71 /* Views */,
 				E9414DCF26C45F9500512A71 /* Clients */,
 				E9414DCC26C45ECD00512A71 /* Models */,
@@ -336,6 +347,7 @@
 				C6B31A6D26F37AD4007DEDCE /* GeneralButton.swift in Sources */,
 				E9414DCB26C45EC900512A71 /* Message.swift in Sources */,
 				E9414DEA26C468D700512A71 /* SceneDelegate.swift in Sources */,
+				C6E9D38126F6CDBA00566134 /* AlertControllerExtension.swift in Sources */,
 				E9414DD626C4617B00512A71 /* ChatTableViewCell.swift in Sources */,
 				E9414DE226C4618900512A71 /* AnimationViewController.swift in Sources */,
 				C6B31A6B26F18564007DEDCE /* MenuButton.swift in Sources */,

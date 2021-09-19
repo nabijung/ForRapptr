@@ -25,7 +25,11 @@ import Foundation
 
 class LoginClient {
     
-    var session: URLSession?
+    var session = URLSession(configuration: .default)
+    
+    var task: URLSessionDataTask?
+    
+    static let shared = LoginClient()
     
     func login(email: String, password: String, completion: @escaping (String) -> Void, error errorHandler: @escaping (String?) -> Void) {
         
@@ -35,9 +39,11 @@ class LoginClient {
             return
         }
         
-        let task = session?.dataTask(with: url) { data, response, error in DispatchQueue.main.async {
+        let start = Date()
+        
+        task = session.dataTask(with: url) { data, response, error in DispatchQueue.main.async {
             
-            if let error = error {
+            if error != nil {
                 errorHandler("error with task")
                 return
             }
@@ -49,25 +55,36 @@ class LoginClient {
             do {
                 switch response.statusCode {
                 case 200:
-                    let loginJSON = try JSONSerialization.jsonObject(with: data)
-                    print(loginJSON)
-//                    if let dictionary = loginJSON as? [String: Any],
-//                                let results = dictionary["results"] as? [[String: Any]] {
-//                                DispatchQueue.main.async {
-//                                    results.forEach { print($0["body"] ?? "", terminator: "\n\n") }
-//                                }
-//                            }
+                    let finish = Date()
+                    let executionTime = finish.timeIntervalSince(start)
+                    print("Execution time: \(executionTime.stringFromTimeInterval())")
+                    print(data)
+                    completion(String(executionTime))
                 default:
+                    let finish = Date()
+                    let executionTime = finish.timeIntervalSince(start)
+                    print("Execution time: \(executionTime.stringFromTimeInterval())")
                     errorHandler("error 400")
                 }
-            } catch {
-                errorHandler("error")
             }
-            
         }
         
         }
         task?.resume()
         
     }
+
 }
+
+extension TimeInterval{
+
+        func stringFromTimeInterval() -> String {
+
+            let ms = Int((self.truncatingRemainder(dividingBy: 1)) * 1000)
+
+            return String(ms)
+
+        }
+    }
+
+

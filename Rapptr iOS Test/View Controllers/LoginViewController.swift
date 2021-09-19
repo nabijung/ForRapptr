@@ -73,19 +73,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func didPressLoginButton(_ sender: Any) {
+        guard let email = emailTextField.text?.replacingOccurrences(of: " ", with: ""),
+        let password = passwordTextField.text?.replacingOccurrences(of: " ", with: ""),
+        !(email.isEmpty) && !(password.isEmpty) else {
+            //handle error
+            presentSimpleAlert(title: "Attention", message: "Please fill out all fields.")
+            return
+        }
+        LoginClient.shared.login(email: email, password: password, completion: { timeInMilliseconds in
+            //present sucess
+            self.presentSimpleAlert(title: "Success", message: "It took \(timeInMilliseconds) milliseconds to log you in!")
+        }, error: { errorMessage in
+            //present error
+            self.presentSimpleAlert(title: "Error", message: errorMessage ?? "An error has occurred.")
+        })
     }
     
     func stackViewStyle(){
         view.addSubview(stackView)
-        
+
+        stackView.isUserInteractionEnabled = true
+
         let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
                 (self.navigationController?.navigationBar.frame.height ?? 0.0)
-        
+
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: topBarHeight + 64).isActive = true
         stackView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
-        
+
     }
     
     func backgroundImageStyle(){
@@ -105,13 +121,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        view.endEditing(true)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
+    
 }

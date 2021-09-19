@@ -28,6 +28,11 @@ class MenuViewController: UIViewController {
      * =========================================================================================
      */
     
+    /*
+     Welcome to my project! I've left some comments in areas that I thought might require more explaination. I had a lot of fun doing this project! Thank you for giving me the oportunity to try it out! Please feel free to contact me if you have any questions.
+     - nabi
+     */
+    
     // MARK: - Outlets
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!

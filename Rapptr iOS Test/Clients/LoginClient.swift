@@ -23,6 +23,10 @@ import Foundation
  *
 */
 
+/*
+ I am pretty convinced that the login API is broken. There is also a high chance that I am just doing something stupid. I was not able to get the API to work on Postman, so I was never actually able to run the success code, so I left the milisecond code in the error section to make sure that it works.
+ */
+
 class LoginClient {
     
     var session = URLSession(configuration: .default)

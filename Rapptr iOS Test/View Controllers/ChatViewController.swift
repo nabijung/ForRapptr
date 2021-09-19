@@ -40,6 +40,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func callToViewModelForUIUpdate(){
+        /* I decided to use MVVM to practice and also because in the past when I've made chats it's
+        gotten very confusing without this added layer of organization.
+        */
         self.chatViewModel.bindChatViewModelToController = {
             self.messages = self.chatViewModel.chatData
             self.configureTable(tableView: self.chatTable)

@@ -57,7 +57,7 @@ class ChatClient {
                                 let messages = dictionary["data"] as? [[String: Any]] {
                                 DispatchQueue.main.async {
                                     messages.forEach {
-                                        let object = Message.init(testName: $0["name"] as! String, withTestMessage: $0["message"] as! String, avatarURL: $0["avatar_url"] as? String)
+                                        let object = Message.init(userID: $0["user_id"] as! String, testName: $0["name"] as! String, withTestMessage: $0["message"] as! String, avatarURL: $0["avatar_url"] as? String)
                                         messageObjects.append(object)
                                     }
                                     completion(messageObjects)

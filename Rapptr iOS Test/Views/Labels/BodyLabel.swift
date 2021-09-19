@@ -7,6 +7,11 @@
 
 import UIKit
 import Foundation
+/*
+ This is an area that I wish I had mre time to work on. The styling of the label was becoming too extensive, so i decided to create a custom label even though i wouldn't be reusing it. However, I think the insets I created are preventing the label from creating the correct size. In the end I created a work around by checking if the lable was truncated in intrinsicContentSize.
+ 
+ The inspectables keep on throwing me an error, I don't know how to fix that, guess I could just delete them.
+ */
 
 @IBDesignable
 class BodyLabel: UILabel {

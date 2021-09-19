@@ -6,6 +6,9 @@
 
 import UIKit
 import SDWebImage
+/*
+ This is my one pod of choice that i used to get the images via url string.
+ */
 
 class ChatTableViewCell: UITableViewCell {
     
